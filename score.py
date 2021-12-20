@@ -64,13 +64,13 @@ if path is not None:
       class_name=t1["name"]
       conf_score=t1["confidence"]
       
-      op1=cv2.rectangle(op1,start,end,color, thickness)
-      op1 = cv2.putText(op1, str(label_id), org, font,fontScale, color, thickness, cv2.LINE_AA)
+#       op1=cv2.rectangle(op1,start,end,color, thickness)
+#       op1 = cv2.putText(op1, str(label_id),, org, font,fontScale, color, thickness, cv2.LINE_AA)
       
       
   PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
   
-  st.write(start)
+  st.write(str(label_id),org)
   st.write("")
   st.image(PIL_image, caption="predictions")
 
