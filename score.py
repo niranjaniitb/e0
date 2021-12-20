@@ -14,7 +14,9 @@ st.text("provide url")
 @st.cache(allow_output_mutation=True)
 def load_model():
 # Model
-  model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
+#   model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
+  model = torch.hub.load('niranjaniitb/e0', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
+  
   return model
 
 with st.spinner("Loading model into memory--"):
