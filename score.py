@@ -46,7 +46,7 @@ if path is not None:
     label=decode_img(content)
     label=json.loads(label)
     print("--label--", label)
-#     for t1 in label:
+    for t1 in label:
 #       print(t1)
 #       bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
 #       label_id=t1["class"]
@@ -58,7 +58,7 @@ if path is not None:
       
       
     
-  st.write(type(label))
+      st.write(t1)
   st.write("")
   st.image(image, caption="predictions")
 
