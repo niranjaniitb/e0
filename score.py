@@ -62,7 +62,7 @@ if path is not None:
     
       st.write(type(op1))
   st.write("")
-  st.image(draw, caption="predictions")
+  st.image(image, caption="predictions")
 
 
 # # Images
