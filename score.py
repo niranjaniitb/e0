@@ -55,10 +55,12 @@ if path is not None:
     for t1 in label:
       print(t1)
       bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
+      start=(bboxes[0],bboxes[1])
+      end=(bboxes[2],bboxes[3])
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
-      draw=cv2.rectangle(op1,(bboxes[0],bboxes[1]),(bboxes[2],bboxes[3]),color, thickness)
+      draw=cv2.rectangle(op1,start,end,color, thickness)
       PIL_image = Image.fromarray(draw.astype('uint8'), 'RGB')
 #       draw = ImageDraw.Draw(op1)
 #       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
