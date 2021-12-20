@@ -41,13 +41,13 @@ if path is not None:
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
-    for t1 in label:
-      bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
-      label_id=t1["class"]
-      class_name=t1["name"]
-      conf_score=t1["confidence"]
-      draw = ImageDraw.Draw(image)
-      draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
+#     for t1 in label:
+#       bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
+#       label_id=t1["class"]
+#       class_name=t1["name"]
+#       conf_score=t1["confidence"]
+#       draw = ImageDraw.Draw(image)
+#       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
@@ -55,7 +55,7 @@ if path is not None:
     
     st.write(label)
   st.write("")
-  st.image(draw, caption="predictions")
+  st.image(image, caption="predictions")
 
 
 # # Images
