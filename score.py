@@ -60,17 +60,17 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
-      draw=cv2.rectangle(op1,start,end,color, thickness)
-      PIL_image = Image.fromarray(draw.astype('uint8'), 'RGB')
+      op1=cv2.rectangle(op1,start,end,color, thickness)
+  PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
 #       draw = ImageDraw.Draw(op1)
 #       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
     
-      st.write(PIL_image)
+  st.write(type(PIL_image))
   st.write("")
-  st.image(draw, caption="predictions")
+  st.image(PIL_image, caption="predictions")
 
 
 # # Images
