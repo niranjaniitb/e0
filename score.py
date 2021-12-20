@@ -28,11 +28,9 @@ with st.spinner("Loading model into memory--"):
 
 def decode_img(image):
   print("--image--", image)
-  # image_bytes=image.read()
   img = Image.open(BytesIO(image))
 
   results = model(img, size=640)  # reduce size=320 for faster inference
-#   return results.pandas().xyxy[0].to_json(orient="records")
   return results.pandas().xyxy[0].to_json(orient="records")
 
 
@@ -47,6 +45,9 @@ if path is not None:
   
   color = (255, 0, 0)
   thickness = 2
+  # font
+  font = cv2.FONT_HERSHEY_SIMPLEX
+  fontScale = 1
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
@@ -57,12 +58,17 @@ if path is not None:
       
       start=(bboxes[0],bboxes[1])
       end=(bboxes[2],bboxes[3])
+      org = (bboxes[0]+(bboxes[2]-bboxes[0])/2,bboxes[1]+(bboxes[3]-bboxes[1])/2)
       
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
       
       op1=cv2.rectangle(op1,start,end,color, thickness)
+      op1 = cv2.putText(op1, label_id, org, font, 
+                   fontScale, color, thickness, cv2.LINE_AA)
+      
+      
   PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
   
   st.write(start)
