@@ -58,14 +58,14 @@ if path is not None:
       
       start=(bboxes[0],bboxes[1])
       end=(bboxes[2],bboxes[3])
-      org = (bboxes[0]+(bboxes[2]-bboxes[0])/2,bboxes[1]+(bboxes[3]-bboxes[1])/2)
+      org = (int(bboxes[0]+(bboxes[2]-bboxes[0])/2),int(bboxes[1]+(bboxes[3]-bboxes[1])/2))
       
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
       
-#       op1=cv2.rectangle(op1,start,end,color, thickness)
-#       op1 = cv2.putText(op1, str(label_id),, org, font,fontScale, color, thickness, cv2.LINE_AA)
+      op1=cv2.rectangle(op1,start,end,color, thickness)
+      op1 = cv2.putText(op1, str(label_id),, org, font,fontScale, color, thickness, cv2.LINE_AA)
       
       
   PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
