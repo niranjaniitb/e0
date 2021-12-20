@@ -1,5 +1,4 @@
 torch
-tensorflow
 numpy
 streamlit
-PIL
+pillow
