@@ -13,3 +13,6 @@ while run:
     FRAME_WINDOW.image(frame)
 else:
     st.write('Stopped')
+    
+    
+
