@@ -43,12 +43,12 @@ if path is not None:
   image=Image.open(BytesIO(content))
   op1=np.array(image)
   
-  color = (255, 255, 0)
+  color = (0, 255, 0)
   thickness = 2
   # font
   font = cv2.FONT_HERSHEY_SIMPLEX
   fontScale = 0.5
-  f_color=(0,255,0)
+  f_color=(255,0,0)
   op_names={}
   
   with st.spinner("--classifying--"):
