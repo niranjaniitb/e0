@@ -29,7 +29,9 @@ def decode_img(image):
   img = Image.open(BytesIO(image))
 
   results = model(img, size=640)  # reduce size=320 for faster inference
-  return results.pandas().xyxy[0].to_json(orient="records")
+#   return results.pandas().xyxy[0].to_json(orient="records")
+  return results.pandas()
+
 
 path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/images/zidane.jpg')
 
