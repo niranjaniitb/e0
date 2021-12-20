@@ -47,20 +47,20 @@ if path is not None:
     label=json.loads(label)
     print("--label--", label)
     for t1 in label:
-#       print(t1)
-#       bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
-#       label_id=t1["class"]
-#       class_name=t1["name"]
-#       conf_score=t1["confidence"]
-#       draw = ImageDraw.Draw(image)
-#       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
+      print(t1)
+      bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
+      label_id=t1["class"]
+      class_name=t1["name"]
+      conf_score=t1["confidence"]
+      draw = ImageDraw.Draw(image)
+      draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
     
       st.write(t1)
   st.write("")
-  st.image(image, caption="predictions")
+  st.image(draw, caption="predictions")
 
 
 # # Images
