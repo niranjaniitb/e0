@@ -4,6 +4,7 @@ import streamlit as st
 from PIL import Image
 import requests
 from io import BytesIO
+from PIL import Image, ImageDraw
 # import tensorflow as tf
 
 
@@ -36,12 +37,25 @@ if path is not None:
   content=requests.get(path).content
 
   st.write("predictions:")
+  image=Image.open(BytesIO(content))
+  
   with st.spinner("--classifying--"):
     label=decode_img(content)
+    for t1 in label:
+      bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
+      label_id=t1["class"]
+      class_name=t1["name"]
+      conf_score=t1["confidence"]
+      draw = ImageDraw.Draw(image)
+      draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
+      
+      
+      
+    
+    
     st.write(label)
   st.write("")
-  image=Image.open(BytesIO(content))
-  st.image(image, caption="predictions")
+  st.image(draw, caption="predictions")
 
 
 # # Images
