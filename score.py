@@ -5,6 +5,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from PIL import Image, ImageDraw
+import json
 # import tensorflow as tf
 
 
@@ -43,6 +44,7 @@ if path is not None:
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
+    label=json.dumps(label)
     print("--label--", label)
 #     for t1 in label:
 #       print(t1)
