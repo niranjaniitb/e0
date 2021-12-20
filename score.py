@@ -68,8 +68,6 @@ if path is not None:
       class_name=t1["name"]
       conf_score=t1["confidence"]
       
-      
-      
       if label_id in op_names:
         op_names[label_id]= [op_names[label_id][0]+1,class_name]
       else:
