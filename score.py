@@ -36,6 +36,7 @@ def decode_img(image):
 
 path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/images/zidane.jpg')
 
+
 if path is not None:
   content=requests.get(path).content
 
@@ -66,6 +67,8 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
+      
+      
       
       if label_id in op_names:
         op_names[label_id]= [op_names[label_id][0]+1,class_name]
