@@ -68,7 +68,7 @@ if path is not None:
       
       
     
-  st.write(type(PIL_image))
+  st.write(op1.shape)
   st.write("")
   st.image(PIL_image, caption="predictions")
 
