@@ -15,7 +15,7 @@ st.text("provide url")
 def load_model():
 # Model
 #   model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
-  model = torch.hub.load('C:\\Users\\CDK\\', 'custom', source='local')  # or yolov5m, yolov5l, yolov5x, custom
+  model = torch.hub.load('hubconf.py', 'custom', source='local')  # or yolov5m, yolov5l, yolov5x, custom
   
   return model
 
