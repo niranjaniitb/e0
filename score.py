@@ -54,13 +54,13 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
-      draw = ImageDraw.Draw(op1)
-      draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
+#       draw = ImageDraw.Draw(op1)
+#       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
     
-      st.write(type(op1))
+      st.write(op1.shape)
   st.write("")
   st.image(draw, caption="predictions")
 
