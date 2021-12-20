@@ -44,7 +44,7 @@ if path is not None:
   with st.spinner("--classifying--"):
     label=decode_img(content)
     print("--label--", label)
-    for t1 in label:
+#     for t1 in label:
 #       print(t1)
 #       bboxes=[t1["xmin"],t1["ymin"],t1["xmax"],t1["ymax"]]
 #       label_id=t1["class"]
@@ -56,7 +56,7 @@ if path is not None:
       
       
     
-      st.write(t1)
+      st.write(type(t1)
   st.write("")
   st.image(image, caption="predictions")
 
