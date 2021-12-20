@@ -56,7 +56,7 @@ if path is not None:
       
       
     
-      st.write(type(t1)
+      st.write(type(t1))
   st.write("")
   st.image(image, caption="predictions")
 
