@@ -8,8 +8,8 @@ from io import BytesIO
 
 
 st.set_option("deprecation.showfileUploaderEncoding", False)
-st.title("bean image classifier")
-st.text("provide url")
+st.title("AVA Product Finder")
+st.text("provide image url")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
@@ -41,7 +41,7 @@ if path is not None:
     st.write(label)
   st.write("")
   image=Image.open(BytesIO(content))
-  st.image(image, caption="classifying bean image")
+  st.image(image, caption="predictions")
 
 
 # # Images
