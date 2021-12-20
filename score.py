@@ -44,7 +44,7 @@ if path is not None:
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
-    label=json.dumps(label)
+    label=json.loads(label)
     print("--label--", label)
 #     for t1 in label:
 #       print(t1)
