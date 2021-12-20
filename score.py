@@ -6,6 +6,7 @@ import requests
 from io import BytesIO
 from PIL import Image, ImageDraw
 import json
+import numpy as np
 # import tensorflow as tf
 
 
@@ -41,6 +42,7 @@ if path is not None:
 
   st.write("predictions:")
   image=Image.open(BytesIO(content))
+  op1=np.array(image)
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
@@ -58,7 +60,7 @@ if path is not None:
       
       
     
-      st.write(type(image))
+      st.write(type(op1))
   st.write("")
   st.image(draw, caption="predictions")
 
