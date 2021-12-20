@@ -15,7 +15,7 @@ st.text("provide url")
 def load_model():
 # Model
 #   model = torch.hub.load('ultralytics/yolov5', 'yolov5s')  # or yolov5m, yolov5l, yolov5x, custom
-  model = torch.hub.load('https://github.com/niranjaniitb/e0/blob/0b603eab2d604c181353d67320bae5282f6a9a5c/yolov5s.pt', 'custom')  # or yolov5m, yolov5l, yolov5x, custom
+  model = torch.hub.load('niranjaniitb/e0/yolov5s.pt', 'custom')  # or yolov5m, yolov5l, yolov5x, custom
   
   return model
 
