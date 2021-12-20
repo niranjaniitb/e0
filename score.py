@@ -7,6 +7,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 import json
 import numpy as np
+import cv2
 # import tensorflow as tf
 
 
@@ -44,6 +45,9 @@ if path is not None:
   image=Image.open(BytesIO(content))
   op1=np.array(image)
   
+  color = (255, 0, 0)
+  thickness = 2
+  
   with st.spinner("--classifying--"):
     label=decode_img(content)
     label=json.loads(label)
@@ -54,13 +58,14 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
+      draw=cv2.rectangle(op1,(bboxes[0],bboxes[1]),(bboxes[2],bboxes[3]),color, thickness)
 #       draw = ImageDraw.Draw(op1)
 #       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
     
-      st.write(op1.shape)
+      st.write(draw)
   st.write("")
   st.image(draw, caption="predictions")
 
