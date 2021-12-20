@@ -35,7 +35,7 @@ path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/image
 if path is not None:
   content=requests.get(path).content
 
-  st.write("predicted classs:")
+  st.write("predictions:")
   with st.spinner("--classifying--"):
     label=decode_img(content)
     st.write(label)
