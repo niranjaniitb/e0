@@ -67,9 +67,10 @@ if path is not None:
       conf_score=t1["confidence"]
       
       if label_id in op_names:
-        op_names[label_id]= op_names[label_id][0]+1
+        op_names[label_id]= [op_names[label_id][0]+1,class_name]
       else:
-        op_names[label_id]=[1,class_name]        
+        op_names[label_id]=[1,class_name]     
+        
       op1=cv2.rectangle(op1,start,end,color, thickness)
       op1 = cv2.putText(op1, str(label_id), org, font,fontScale, color, thickness, cv2.LINE_AA)
       
