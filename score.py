@@ -48,6 +48,7 @@ if path is not None:
   # font
   font = cv2.FONT_HERSHEY_SIMPLEX
   fontScale = 0.5
+  f_color=(0,255,0)
   op_names={}
   
   with st.spinner("--classifying--"):
@@ -72,7 +73,7 @@ if path is not None:
         op_names[label_id]=[1,class_name]     
         
       op1=cv2.rectangle(op1,start,end,color, thickness)
-      op1 = cv2.putText(op1, str(label_id), org, font,fontScale, color, thickness, cv2.LINE_AA)
+      op1 = cv2.putText(op1, str(label_id), org, font,fontScale, f_color, thickness, cv2.LINE_AA)
       
       
   PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
