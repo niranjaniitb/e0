@@ -48,7 +48,7 @@ if path is not None:
   # font
   font = cv2.FONT_HERSHEY_SIMPLEX
   fontScale = 0.5
-  op_names=[]
+  op_names={}
   
   with st.spinner("--classifying--"):
     label=decode_img(content)
@@ -64,8 +64,10 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
-      op_names.append(class_name)
-      
+      if label_id in op_names:
+        op_names[label_id]+=1
+      else:
+        op_names[label_id]=1        
       op1=cv2.rectangle(op1,start,end,color, thickness)
       op1 = cv2.putText(op1, str(label_id), org, font,fontScale, color, thickness, cv2.LINE_AA)
       
