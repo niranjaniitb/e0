@@ -30,7 +30,7 @@ def decode_img(image):
 
   results = model(img, size=640)  # reduce size=320 for faster inference
 #   return results.pandas().xyxy[0].to_json(orient="records")
-  return results.pandas().xyxy[0].to_json
+  return results.pandas().xyxy[0].to_json(orient="records")
 
 
 path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/images/zidane.jpg')
@@ -55,7 +55,6 @@ if path is not None:
       
       
       
-    
     
       st.write(t1)
   st.write("")
