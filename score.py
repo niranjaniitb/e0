@@ -51,9 +51,8 @@ if path is not None:
   with st.spinner("--classifying--"):
     label=decode_img(content)
     label=json.loads(label)
-    print("--label--", label)
+    
     for t1 in label:
-      print(t1)
       bboxes=[int(t1["xmin"]),int(t1["ymin"]),int(t1["xmax"]),int(t1["ymax"])]
       
       start=(bboxes[0],bboxes[1])
@@ -62,24 +61,11 @@ if path is not None:
       label_id=t1["class"]
       class_name=t1["name"]
       conf_score=t1["confidence"]
+      
       op1=cv2.rectangle(op1,start,end,color, thickness)
   PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
-#       draw = ImageDraw.Draw(op1)
-#       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
-      
-      
-      
-    
+  
   st.write(start)
   st.write("")
   st.image(PIL_image, caption="predictions")
 
-
-# # Images
-# img = 'https://ultralytics.com/images/zidane.jpg'  # or file, Path, PIL, OpenCV, numpy, list
-
-# # Inference
-# results = model(img)
-
-# # Results
-# print(results.print())  # or .show(), .save(), .crop(), .pandas(), etc.
