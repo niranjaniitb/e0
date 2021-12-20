@@ -59,13 +59,14 @@ if path is not None:
       class_name=t1["name"]
       conf_score=t1["confidence"]
       draw=cv2.rectangle(op1,(bboxes[0],bboxes[1]),(bboxes[2],bboxes[3]),color, thickness)
+      PIL_image = Image.fromarray(draw.astype('uint8'), 'RGB')
 #       draw = ImageDraw.Draw(op1)
 #       draw.rectangle([bboxes[0],bboxes[1],bboxes[2],bboxes[3]], width = 10, outline="#0000ff")
       
       
       
     
-      st.write(draw)
+      st.write(PIL_image)
   st.write("")
   st.image(draw, caption="predictions")
 
