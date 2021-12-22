@@ -30,8 +30,8 @@ with st.spinner("Loading model into memory--"):
   model=load_model()
 
 def decode_img(image):
-  print("--image--", image)
-  img = Image.open(BytesIO(image))
+#   print("--image--", image)
+#   img = Image.open(BytesIO(image))
 
   results = model(img, size=640)  # reduce size=320 for faster inference
   return results.pandas().xyxy[0].to_json(orient="records")
