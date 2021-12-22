@@ -33,7 +33,7 @@ def decode_img(image):
 #   print("--image--", image)
 #   img = Image.open(BytesIO(image))
 
-  results = model(img, size=640)  # reduce size=320 for faster inference
+  results = model(image, size=640)  # reduce size=320 for faster inference
   return results.pandas().xyxy[0].to_json(orient="records")
 
 
