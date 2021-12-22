@@ -13,6 +13,7 @@ torchvision>=0.8.1
 tqdm>=4.41.0
 streamlit-webcam-example
 streamlit-webrtc
+opencv-contrib-python
 
 # Logging -------------------------------------
 tensorboard>=2.4.1
