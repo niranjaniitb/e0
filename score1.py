@@ -52,8 +52,10 @@ if uploaded_file is not None:
     st.write(type(image))
     st.write("detection...")
 #   st.write("predictions:")
-    image=Image.open(BytesIO(image))
+#     image=Image.open(BytesIO(image))
     op1=np.array(image)
+    st.write(type(op1))
+  
 
     color = (0, 255, 0)
     thickness = 2
