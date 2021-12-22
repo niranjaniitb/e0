@@ -49,12 +49,12 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
 #     st.image(image, caption='Uploaded Image.', use_column_width=True)
-    st.write(type(image))
+    st.write("initial image type---",type(image))
     st.write("detection...")
 #   st.write("predictions:")
 #     image=Image.open(BytesIO(image))
     op1=np.array(image)
-    st.write(type(op1))
+    st.write("--image type after converting to npar----",type(op1), "--np sahpe--", op1.shape)
   
 
     color = (0, 255, 0)
