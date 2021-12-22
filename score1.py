@@ -13,7 +13,10 @@ import cv2
 
 st.set_option("deprecation.showfileUploaderEncoding", False)
 st.title("AVA Product Finder")
-st.text("provide image url")
+# st.text("provide image url")
+
+
+#-------
 
 @st.cache(allow_output_mutation=True)
 def load_model():
@@ -34,52 +37,60 @@ def decode_img(image):
   return results.pandas().xyxy[0].to_json(orient="records")
 
 
-path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/images/zidane.jpg')
+# path=st.text_input("enter image URL to detect--", 'https://ultralytics.com/images/zidane.jpg')
 
 
-if path is not None:
-  content=requests.get(path).content
+# if path is not None:
+#   content=requests.get(path).content
 
-  st.write("predictions:")
-  image=Image.open(BytesIO(content))
-  op1=np.array(image)
-  
-  color = (0, 255, 0)
-  thickness = 2
-  # font
-  font = cv2.FONT_HERSHEY_SIMPLEX
-  fontScale = 0.5
-  f_color=(255,0,0)
-  op_names={}
-  
-  with st.spinner("--classifying--"):
-    label=decode_img(content)
-    label=json.loads(label)
-    
-    for t1 in label:
-      temp=[]
-      bboxes=[int(t1["xmin"]),int(t1["ymin"]),int(t1["xmax"]),int(t1["ymax"])]
-      
-      start=(bboxes[0],bboxes[1])
-      end=(bboxes[2],bboxes[3])
-      org = (int(bboxes[0]+(bboxes[2]-bboxes[0])/2),int(bboxes[1]+(bboxes[3]-bboxes[1])/2))
-      
-      label_id=t1["class"]
-      class_name=t1["name"]
-      conf_score=t1["confidence"]
-      
-      if label_id in op_names:
-        op_names[label_id]= [op_names[label_id][0]+1,class_name]
-      else:
-        op_names[label_id]=[1,class_name]     
-        
-      op1=cv2.rectangle(op1,start,end,color, thickness)
-      op1 = cv2.putText(op1, str(label_id), org, font,fontScale, f_color, thickness, cv2.LINE_AA)
-      
-      
-  PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
-  
-  st.write(op_names)
-  st.write("")
-  st.image(PIL_image, caption="predictions")
+st.title("Upload + Detection Example")
+#---------
+uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+if uploaded_file is not None:
+    image = Image.open(uploaded_file)
+#     st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.write(type(image))
+    st.write("detection...")
+#   st.write("predictions:")
+    image=Image.open(BytesIO(image))
+    op1=np.array(image)
+
+    color = (0, 255, 0)
+    thickness = 2
+    # font
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    fontScale = 0.5
+    f_color=(255,0,0)
+    op_names={}
+
+    with st.spinner("--classifying--"):
+      label=decode_img(content)
+      label=json.loads(label)
+
+      for t1 in label:
+        temp=[]
+        bboxes=[int(t1["xmin"]),int(t1["ymin"]),int(t1["xmax"]),int(t1["ymax"])]
+
+        start=(bboxes[0],bboxes[1])
+        end=(bboxes[2],bboxes[3])
+        org = (int(bboxes[0]+(bboxes[2]-bboxes[0])/2),int(bboxes[1]+(bboxes[3]-bboxes[1])/2))
+
+        label_id=t1["class"]
+        class_name=t1["name"]
+        conf_score=t1["confidence"]
+
+        if label_id in op_names:
+          op_names[label_id]= [op_names[label_id][0]+1,class_name]
+        else:
+          op_names[label_id]=[1,class_name]     
+
+        op1=cv2.rectangle(op1,start,end,color, thickness)
+        op1 = cv2.putText(op1, str(label_id), org, font,fontScale, f_color, thickness, cv2.LINE_AA)
+
+
+    PIL_image = Image.fromarray(op1.astype('uint8'), 'RGB')
+
+    st.write(op_names)
+    st.write("")
+    st.image(PIL_image, caption="predictions")
 
