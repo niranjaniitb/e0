@@ -57,7 +57,7 @@ if uploaded_file is not None:
     st.write("--image type after converting to npar----",type(op1), "--np shape--", op1.shape)
   
 
-    color = (0, 255, 0)
+    color = (255,0,0)
     thickness = 2
     # font
     font = cv2.FONT_HERSHEY_SIMPLEX
