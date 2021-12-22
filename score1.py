@@ -54,7 +54,7 @@ if uploaded_file is not None:
 #   st.write("predictions:")
 #     image=Image.open(BytesIO(image))
     op1=np.array(image)
-    st.write("--image type after converting to npar----",type(op1), "--np sahpe--", op1.shape)
+    st.write("--image type after converting to npar----",type(op1), "--np shape--", op1.shape)
   
 
     color = (0, 255, 0)
@@ -66,7 +66,7 @@ if uploaded_file is not None:
     op_names={}
 
     with st.spinner("--classifying--"):
-      label=decode_img(content)
+      label=decode_img(op1)
       label=json.loads(label)
 
       for t1 in label:
