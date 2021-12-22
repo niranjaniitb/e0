@@ -13,8 +13,6 @@ import cv2
 
 st.set_option("deprecation.showfileUploaderEncoding", False)
 st.title("AVA Product Finder")
-# st.text("provide image url")
-
 
 #-------
 
@@ -49,12 +47,12 @@ uploaded_file = st.file_uploader("Choose an image...", type="jpg")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
 #     st.image(image, caption='Uploaded Image.', use_column_width=True)
-    st.write("initial image type---",type(image))
+#     st.write("initial image type---",type(image))
     st.write("detection...")
 #   st.write("predictions:")
 #     image=Image.open(BytesIO(image))
     op1=np.array(image)
-    st.write("--image type after converting to npar----",type(op1), "--np shape--", op1.shape)
+#     st.write("--image type after converting to npar----",type(op1), "--np shape--", op1.shape)
   
 
     color = (255,0,0)
